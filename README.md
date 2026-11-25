@@ -5,12 +5,12 @@ A mobile-first customer, EMI, service and follow-up manager for the Berhampore e
 ## Phase 1 — project and database
 
 1. Create a Supabase project and copy its project URL and anon key into `.env.local` using `.env.example` as a guide. Keep the service role key server-side only.
-2. In Supabase SQL Editor, run `supabase/migrations/202611250001_initial_schema.sql`, then `supabase/seed.sql`.
+2. Apply the tracked database migrations with `npx supabase db push --remote`. This creates the schema and inserts the bilingual starter templates.
 3. Create the single owner account in Supabase Auth (Dashboard → Authentication → Users → Add user). Disable public signups in Auth settings.
 4. Copy that account’s UUID and run `update public.settings set owner_user_id = 'OWNER-UUID' where id = true;`. The RLS policies permit data access only to this authenticated owner.
 5. Install packages with `npm install`, then start locally with `npm run dev`.
 
-The Supabase project reference is stored in `supabase/config.toml`. After installing and signing in to the Supabase CLI, run `supabase link --project-ref jhdfmquhbpljelzqukld` then `supabase db push`; run `supabase/seed.sql` in the Supabase SQL Editor.
+The Supabase project reference is stored in `supabase/config.toml`. After installing and signing in to the Supabase CLI, run `supabase link --project-ref jhdfmquhbpljelzqukld` then `supabase db push --remote`.
 
 ## Phase 2 — customer and reminder workflows
 
